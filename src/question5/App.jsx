@@ -13,14 +13,32 @@
 // laddningsindikator.
 
 // Exempel på användning:
-import useFetchData from "./useFetchData";
+import { useEffect, useState } from "react";
+// import useFetchData from "./useFetchData";
+
+function useFetchData(url) {
+  const [data, setData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    async function getData() {
+      const response = await fetch(url);
+      const data = await response.json();
+      setData(data);
+      setIsLoading(false);
+    }
+    getData();
+  }, [url]);
+
+  return { data, isLoading };
+}
 
 function UserList() {
-  const { data, isPending } = useFetchData(
+  const { data, isLoading } = useFetchData(
     "https://jsonplaceholder.typicode.com/users"
   );
 
-  if (isPending) return <div>Laddar...</div>;
+  if (isLoading) return <div>Laddar...</div>;
   return (
     <ul>
       {data.map((user) => (

@@ -3,6 +3,8 @@
 //Använd Redux Toolkit för att hantera en fråga som ställs i QuestionComponent och
 // sedan svaras på i AnswerComponent.
 
+import { Provider } from "react-redux";
+
 // State: Skapa en store och en questionSlice som hanterar en fråga och ett svar.
 // questionSlice ska innehålla tillstånd för question (en sträng) och answer
 // (en sträng), med actions för att sätta en ny fråga och svara på den.
@@ -14,3 +16,19 @@
 // AnswerComponent: Ska visa ett inputfält och en knapp för att svara
 // på frågan. När svaret skickas, ska det också lagras i Redux store och visas
 // under inputfältet.
+
+
+// Installera Redux/toolkit npm install react-redux @reduxjs/toolkit
+
+import { store } from "@reduxjs/toolkit";
+import QuestionComponent from "./QuestionComponent";
+import AnswerComponent from "./AnswerComponent";
+
+export default function App(){
+  return (
+    <Provider store={store}>
+        <QuestionComponent />
+        <AnswerComponent />
+    </Provider>
+  )
+}

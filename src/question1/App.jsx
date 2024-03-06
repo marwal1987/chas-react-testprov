@@ -7,44 +7,43 @@
 // och en "Ta bort"-knapp bredvid varje kommentar för att ta bort den från listan.
 import { useState } from "react";
 
-function App() {
-  const [list, setList] = useState([]);
-  const [comment, setComment] = useState("");
+let count = 1;
 
-  function handleChange(e) {
-    setComment(e.target.value);
+function App() {
+  const [comments, setComments] = useState([]);
+  const [input, setInput] = useState("");
+
+  function handleComment(e) {
+    setInput(e.target.value);
   }
 
-  function addComment() {
-    setList([...list, comment]); // Spread för att undvika mutation
-    setComment(""); // Återställ inputfältet
+  function handleAddComment() {
+    const comment = {
+      id: count++,
+      text: input,
+    };
+    setComments([...comments, comment]);
   }
 
   // Ta bort kommentar ur listan baserat på index
-  function removeComment(index) {
-    const newList = [...list];
-    newList.splice(index, 1);
-    setList(newList);
+  function handleRemove(id) {
+    const filteredComments = comments.filter((comment) => comment.id != id);
+    setComments(filteredComments);
   }
 
   return (
-    <div>
-      <input
-        type="text"
-        value={comment} // Kopplar input-fältet till comment-state
-        onChange={handleChange}
-      />
-      <button onClick={addComment}>Lägg till</button>
-
-      <ul>
-        {list.map((comment, index) => (
-          <li key={index}>
-            {comment}
-            <button onClick={() => removeComment(index)}>Ta bort</button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <main>
+      {comments.map((comment) => {
+        return (
+          <div>
+            <p>{comment.text}</p>
+            <button onClick={() => handleRemove(comment.id)}>Remove</button>
+          </div>
+        );
+      })}
+      <input type="text" onChange={handleComment} />
+      <button onClick={handleAddComment}>Add</button>
+    </main>
   );
 }
 

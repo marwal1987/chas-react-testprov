@@ -9,36 +9,69 @@
 
 import { useState } from "react";
 
-const user = {
-  email: "user@email.com",
-};
-
 function App() {
-  const [isEditing, setIsEditing] = useState(false);
-  const [newEmail, setNewEmail] = useState(user.email);
+  const [email, setEmail] = useState("user@email");
+  const [edit, setEdit] = useState(false);
 
-  function handleSave() {
-    user.email = newEmail; // Uppdatera användarens e-postadress
-    setIsEditing(false); // Avsluta redigeringsläget
-  }
-
-  return (
-    <div>
-      <h1>User email: {user.email}</h1>
-      {isEditing ? (
+  function renderEmail() {
+    if (edit) {
+      return (
         <>
           <input
             type="text"
-            value={newEmail}
-            onChange={(e) => setNewEmail(e.target.value)} // Uppdatera newEmail-state när användaren skriver
+            onChange={(e) => setEmail(e.target.value)}
+            value={email}
           />
-          <button onClick={handleSave}>Spara</button>
+          <button onClick={() => setEdit(!edit)}>Save</button>
         </>
-      ) : (
-        <button onClick={() => setIsEditing(true)}>Redigera</button> // Anropa setIsEditing i en funktion
-      )}
-    </div>
-  );
+      );
+    } else {
+      return (
+        <>
+          <p>{email}</p>
+          <button onClick={() => setEdit(!edit)}>Edit</button>
+        </>
+      );
+    }
+  }
+  // Todo: add onclick
+  return <div>{renderEmail}</div>;
 }
 
 export default App;
+
+// import { useState } from "react";
+
+// const user = {
+//   email: "user@email.com",
+// };
+
+// function App() {
+//   const [isEditing, setIsEditing] = useState(false);
+//   const [newEmail, setNewEmail] = useState(user.email);
+
+//   function handleSave() {
+//     user.email = newEmail; // Uppdatera användarens e-postadress
+//     setIsEditing(false); // Avsluta redigeringsläget
+//   }
+
+//   return (
+//     <div>
+//       <h1>User email: {user.email}</h1>
+//       {isEditing ? (
+//         <>
+//           <input
+//             type="text"
+//             value={newEmail}
+//             onChange={(e) => setNewEmail(e.target.value)} // Uppdatera newEmail-state när användaren skriver
+//           />
+//           <button onClick={handleSave}>Spara</button>
+//         </>
+//       ) : (
+//         <button onClick={() => setIsEditing(true)}>Redigera</button> // Anropa setIsEditing i en funktion
+//       )}
+//     </div>
+//   );
+// }
+
+// export default App;
