@@ -2,11 +2,13 @@ import { useContext } from "react";
 import { ColorContext } from "./colorContext";
 
 export default function ColorSelector() {
-  const { setColor } = useContext(ColorContext);
+  const { dispatch } = useContext(ColorContext);
 
   return (
     <div>
-      <select onChange={(e) => setColor(e.target.value)}>
+      <select
+        onChange={(e) => dispatch({ type: "setColor", color: e.target.value })}
+      >
         <option value="">Choose color...</option>
         <option value="red">Red</option>
         <option value="green">Green</option>

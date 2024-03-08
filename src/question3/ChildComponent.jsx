@@ -4,8 +4,8 @@ export default function ChildComponent({ handleColor }) {
       <h2>Child component</h2>
       <select onChange={(e) => handleColor(e.target.value)}>
         <option value="red">Red</option>
-        <option value="green">Green</option>
-        <option value="blue">Blue</option>
+        <option value="lightgreen">Light green</option>
+        <option value="lightblue">Light blue</option>
       </select>
     </div>
   );

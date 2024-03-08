@@ -16,4 +16,5 @@ export const questionSlice = createSlice({
   },
 });
 
-export const { setQuestion, setAnswer } = questionReducer;
+export const { setQuestion, setAnswer } = questionSlice.actions;
+export default questionSlice.reducer;

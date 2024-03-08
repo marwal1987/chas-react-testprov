@@ -1,5 +1,5 @@
-import { useState } from "react";
 import ChildComponent from "./ChildComponent";
+import { useState } from "react";
 
 export default function ParentComponent() {
   const [color, setColor] = useState();

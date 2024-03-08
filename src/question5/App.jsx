@@ -12,9 +12,7 @@
 // hur din hook kan användas i en komponent för att visa användardata och en
 // laddningsindikator.
 
-// Exempel på användning:
 import { useEffect, useState } from "react";
-// import useFetchData from "./useFetchData";
 
 function useFetchData(url) {
   const [data, setData] = useState(null);

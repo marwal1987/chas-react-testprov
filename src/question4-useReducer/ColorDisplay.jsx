@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { ColorContext } from "./colorContext";
 
 export default function ColorDisplay() {
-  const { color } = useContext(ColorContext);
+  const { state } = useContext(ColorContext);
+  const { color } = state;
 
   return (
     <div>

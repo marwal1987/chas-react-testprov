@@ -14,6 +14,7 @@ export default function QuestionComponent() {
     <div>
       <input type="text" onChange={(e) => setQuestionText(e.target.value)} />
       <button onClick={handleSend}>Send Question</button>
+      <hr />
     </div>
   );
 }

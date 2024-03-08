@@ -21,4 +21,4 @@
 
 // 4. Visa post-data på den dynamiska sidan, inklusive titel och innehåll.
 
-// OBS! Se separat projekt för svar
+// Svar: url-till-github-repo

@@ -19,7 +19,7 @@ function App() {
 
   function handleAddComment() {
     const comment = {
-      id: count++,
+      id: performance.now(),
       text: input,
     };
     setComments([...comments, comment]);
@@ -36,7 +36,7 @@ function App() {
       {comments.map((comment) => {
         return (
           <div>
-            <p>{comment.text}</p>
+            <p key={count++}>{comment.text}</p>
             <button onClick={() => handleRemove(comment.id)}>Remove</button>
           </div>
         );

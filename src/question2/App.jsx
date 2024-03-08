@@ -9,7 +9,7 @@
 
 import { useState } from "react";
 
-function App() {
+export default function App() {
   const [email, setEmail] = useState("user@email");
   const [edit, setEdit] = useState(false);
 
@@ -34,11 +34,9 @@ function App() {
       );
     }
   }
-  // Todo: add onclick
-  return <div>{renderEmail}</div>;
+  return <div>{renderEmail()}</div>;
 }
 
-export default App;
 
 // import { useState } from "react";
 
